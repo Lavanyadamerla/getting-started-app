@@ -1,12 +1,8 @@
 # syntax=docker/dockerfile:1
 
-FROM node:18-alpine
+FROM node:lts-alpine
 WORKDIR /app
-COPY package*json ./
-RUN npm install
 COPY . .
-# RUN yarn install --production
-RUN npm install - nodemon
-# CMD ["node", "src/index.js"]
-CMD ["npm", "run", "dev"]
+RUN yarn install --production
+CMD ["node", "src/index.js"]
 EXPOSE 3000
